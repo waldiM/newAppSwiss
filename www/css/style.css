@@ -1,0 +1,106 @@
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/waldi\/Projects\/swissApp\/www\/css\/style\.scss}line{font-family:\000035}}
+body {
+  font-size: 14px;
+  font-family: arial, verdena, sans-serif; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/waldi\/Projects\/swissApp\/www\/css\/style\.scss}line{font-family:\0000312}}
+.clear {
+  clear: both; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/waldi\/Projects\/swissApp\/www\/css\/style\.scss}line{font-family:\0000315}}
+.loading {
+  background: url(../img/ajax-loader.gif) no-repeat 50% 50%;
+  width: 100%;
+  height: 40px; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/waldi\/Projects\/swissApp\/www\/css\/style\.scss}line{font-family:\0000320}}
+.error, article.homePage section.login .loginError {
+  color: red;
+  text-align: center;
+  padding: 5px 0;
+  font-size: 1.1em; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/waldi\/Projects\/swissApp\/www\/css\/style\.scss}line{font-family:\0000326}}
+article.homePage {
+  background-color: #282b33; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/waldi\/Projects\/swissApp\/www\/css\/style\.scss}line{font-family:\0000331}}
+  article.homePage section.header {
+    background: url(../img/login-mountains.jpg) no-repeat 50% 0% #a11218;
+    background-size: 100% auto;
+    min-height: 200px;
+    max-height: 350px;
+    position: relative; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/waldi\/Projects\/swissApp\/www\/css\/style\.scss}line{font-family:\0000337}}
+    article.homePage section.header .logo {
+      background: url(../img/logo-white.png) 50% 50% no-repeat;
+      width: 100%;
+      height: 48px;
+      position: absolute;
+      top: 35%; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/waldi\/Projects\/swissApp\/www\/css\/style\.scss}line{font-family:\0000344}}
+    article.homePage section.header .arrow {
+      position: absolute;
+      bottom: -20px;
+      left: 49%;
+      background: url(../img/login-mountains.jpg) no-repeat;
+      width: 40px;
+      height: 20px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/waldi\/Projects\/swissApp\/www\/css\/style\.scss}line{font-family:\0000353}}
+      article.homePage section.header .arrow .arrowMask {
+        background: url(../img/login-arrow.png) no-repeat;
+        width: 40px;
+        height: 20px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/waldi\/Projects\/swissApp\/www\/css\/style\.scss}line{font-family:\0000361}}
+  article.homePage section.login .wrapperLogin {
+    width: 70%;
+    margin: auto; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/waldi\/Projects\/swissApp\/www\/css\/style\.scss}line{font-family:\0000365}}
+  article.homePage section.login h1 {
+    margin: 0;
+    padding: 60px 0 50px;
+    text-align: center;
+    color: #fff;
+    font-size: 2em;
+    font-weight: bold; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/waldi\/Projects\/swissApp\/www\/css\/style\.scss}line{font-family:\0000373}}
+  article.homePage section.login .boxLogin {
+    background-color: #23242c;
+    border-radius: 5px;
+    padding: 5px 45px 5px 5px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/waldi\/Projects\/swissApp\/www\/css\/style\.scss}line{font-family:\0000378}}
+  article.homePage section.login input#loginEmail, article.homePage section.login input#loginPassword {
+    border: medium none;
+    display: block;
+    margin: 0;
+    padding: 20px;
+    font-size: 1.6em;
+    border-radius: 5px 5px 0 0;
+    width: 100%; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/waldi\/Projects\/swissApp\/www\/css\/style\.scss}line{font-family:\0000387}}
+  article.homePage section.login input#loginPassword {
+    border-top: 1px solid #DFDFDF;
+    border-radius: 0 0 5px 5px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/waldi\/Projects\/swissApp\/www\/css\/style\.scss}line{font-family:\0000392}}
+  article.homePage section.login .loginError {
+    padding: 0 0 15px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/waldi\/Projects\/swissApp\/www\/css\/style\.scss}line{font-family:\0000396}}
+  article.homePage section.login button.loginButton {
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.6em;
+    text-align: center;
+    padding: 15px;
+    border-radius: 5px;
+    border: 2px solid #23242c;
+    background-color: #eb0000;
+    width: 100%;
+    margin: 20px 0; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/waldi\/Projects\/swissApp\/www\/css\/style\.scss}line{font-family:\00003110}}
+  article.homePage section.forgotPassword button {
+    color: #fff;
+    font-size: 1.6em;
+    text-align: center;
+    padding: 15px;
+    border: none;
+    background-color: #eb0000;
+    width: 100%; }

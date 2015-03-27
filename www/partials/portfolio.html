@@ -1,0 +1,39 @@
+<article class="portfolio">
+
+    <div class="loading" ng-show="loading"></div>
+    
+    <div class="errorMessage" ng-if="companies.length == 0 && !loading">
+        You have no portfolio yet.
+    </div>
+
+    <div class="selectPortfolio">
+        <span>Portfolio: </span>
+        <select
+            ng-model="select.selected" 
+            ng-options="portfolio.portfolio_id as portfolio.portfolio_title for portfolio in portfolios"
+            ng-change="changePortfolio(select.selected)"
+        >
+        </select>
+    </div>
+
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true" ng-repeat="company in companies">
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingOne">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" data-target="#collapseBox-{{company.id}}" aria-expanded="true" aria-controls="collapseOne">
+              <img class="flag" ng-src="http://swiss-metrics.com/files/img/flags/24/{{company.isoCountry2.toLowerCase()}}.png" alt="">
+              {{company.companyName}}
+            </a>
+          </h4>
+        </div>
+        <div id="collapseBox-{{company.id}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            <a class="btn btn-primary" href="#company/{{company.cmp_id}}/{{company.kind}}">Company info</a>
+            <a class="btn btn-primary" href="#notes/{{company.cmp_id}}/{{company.kind}}">Read notes</a>
+            <a class="btn btn-primary" href="#add-note/{{company.cmp_id}}/{{company.kind}}">Add note</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</article>

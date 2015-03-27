@@ -1,0 +1,35 @@
+<article class="portfolio addNote">  
+    
+    <div class="navTitle">
+        <span ng-show="!loading"><a href="#company/{{company.companyId}}/{{company.companyKind}}">{{company.companyName}}</a> &raquo; </span>
+        <a href="#notes/{{company.companyId}}/{{company.companyKind}}">Notes</a> &raquo; Add Note
+    </div>
+
+    <div class="errorMessage" ng-show="saveOk">
+        {{errorMessage}}<br><br>
+        <a class="btn btn-primary" href="#notes/{{company.companyId}}/{{company.companyKind}}">Return to notes</a>
+    </div>
+
+    <form ng-show="!saveOk">
+        <span class="loginError">{{saveError}}</span>
+        <div class="form-group">
+            <label for="addSubject">Subject</label>
+            <input type="text" class="form-control" id="addSubject" placeholder="Enter subject" ng-model="addSubject">
+        </div>
+        <div class="form-group">
+            <label for="addText">Message</label>
+            <textarea row="3" id="addText" class="form-control" placeholder="Enter message" ng-model="addText"></textarea>
+        </div>
+        <div class="form-group">
+            <label>Priority</label>
+            <div class="radioInputs form-inline">
+                <label class="red"><input type="radio" class="form-control" value="1" ng-model="addPriority">Negative</label>
+                <label class="yellow"><input type="radio" class="form-control" value="2" ng-model="addPriority">Neutral</label>
+                <label class="green"><input type="radio" class="form-control" value="3" ng-model="addPriority">Positive</label>
+            </div>
+        </div>
+        <div class="form-group">
+		    <button type="button" class="btn btn-danger" ng-click="saveNoteAction()">Save</button>
+        </div>
+    </form>
+</article>
