@@ -1,0 +1,146 @@
+main{
+    padding:65px 0 10px;
+}
+.loading{
+    background:url(../img/ajax-loader.gif) no-repeat 50% 50%;
+    width:100%;
+    height:40px;
+}
+.errorMessage{
+    text-align:center;
+    font-size:1.4em;
+    color:#444;
+    padding:10px 0;
+}
+.loginError{
+    color:red;
+    padding: 0 30px 10px 10px;
+    float: left;
+    text-align: center;
+    width: 100%;
+}
+.navTitle{
+    padding:0 0 10px;
+    color:#555;
+    font-size: 1.4em;
+}
+nav.navbar {
+    background-color: #222a30 !important;
+    border-bottom: 2px solid #ed1d25;
+}
+nav .navbar-brand{
+    padding: 5px 0 0 10px;
+}
+nav .navbar-brand img {
+    height: 42px;
+}
+nav .navbar-right li a{
+    margin-top: 10px;
+    padding: 5px 10px;
+    margin: 10px 15px 0 15px;
+}
+article.portfolio .panel-heading {
+    padding:0;
+}
+article.portfolio h4 a {
+    padding:10px 15px;
+    display:block;
+    cursor:pointer;
+}
+article.portfolio h4 a:hover {
+    text-decoration:none;
+}
+article.portfolio .flag{
+    padding: 0 7px 0 0;
+}
+article.portfolio .panel-body .btn{
+    margin:2px 0;
+}
+article.portfolio .selectPortfolio{
+    padding: 0 0 15px 0;
+    text-align:right;
+}
+article.portfolio .selectPortfolio span{
+    color:#555;
+}
+article.portfolio .selectPortfolio select{
+    font-size: 1.2em;
+    padding: 5px 12px;
+}
+.noteRead .light {
+    border: 2px solid #e6e6e6;
+    border-radius: 50%;
+    display: inline-block;
+    float: left;
+    height: 16px;
+    margin: 2px 15px 0 5px;
+    width: 16px;
+}
+.noteRead .light.red {
+    background-color: #e71f28;
+}
+.noteRead .light.yellow {
+    background-color: #f3f460;
+}
+.noteRead .light.green {
+    background-color: #3cbc5d;
+}
+.noteRead .author{
+    color:#444;
+    font-size:0.9em;
+}
+.noteRead .date{
+    color:#666;
+    font-size:0.8em;
+}
+.btnAddNoteCenter{
+    text-align:center;
+}
+.login .loginBtn{
+    text-align:center;
+}
+article.home .infoHome{
+    background:url(../img/logo.png) no-repeat 50% 50%;
+    width:100%;
+}
+.addNote .radioInputs input[type="radio"] {
+    height: auto;
+    margin: -3px 5px 0 0;
+}
+.addNote .radioInputs label {
+    font-size: 14px;
+    margin: 0 10px 0 2px;
+}
+.addNote .radioInputs label.green {
+    color: #0e8e00;
+}
+.addNote .radioInputs label.yellow {
+    color: #d8d80a;
+}
+.addNote .radioInputs label.red {
+    color: #e71f28;
+}
+.company .infoRow{
+    padding:1px 0;
+}
+.company .infoRow span{
+    font-weight:bold;
+    width:100px;
+    color:#555;
+    display: inline-block;
+}
+.company .glyphicon{
+    font-size: 1.2em;
+    padding: 0 10px 0 0;
+    color:#888;
+}
+.company .infoRow ul{
+    margin:0;
+    padding:0;
+     display: inline;
+}
+.company .infoRow li{
+    display: inline-block;
+    padding: 0 4px 0 0;
+}
+

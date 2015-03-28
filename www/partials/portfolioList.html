@@ -1,0 +1,15 @@
+<article class="portfolioCompanies">
+
+    <div class="loading" ng-show="loading"></div>
+    
+    <div class="selectPortfolio">
+        <span>Portfolio: </span>
+        <select
+            ng-model="select.selected" 
+            ng-options="portfolio.portfolio_id as portfolio.portfolio_title for portfolio in portfolios"
+            ng-change="changePortfolio(select.selected)"
+        >
+        </select>
+    </div>
+    
+</article>

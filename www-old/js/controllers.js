@@ -3,13 +3,12 @@ var swissCntls = angular.module('swissCntls', []);
 //Login controller
 swissCntls.controller('loginController', ['$scope', '$rootScope', '$location', 'Auth', 'REST', function($scope, $rootScope, $location, Auth, REST) {
 
-    index.stickBottom();
+    app.hideMenu();
 
     //if is logged not show login button
     var token = Auth.get();
     $rootScope.notLogged = token.hash ? false : true;
-    $rootScope.noMenu = true;
-    
+
     $scope.loginAction = function(){
         $scope.loginError = '';
         REST.Login().get({email: $scope.authEmail, password: $scope.authPassword}, function(ret) {
@@ -22,13 +21,13 @@ swissCntls.controller('loginController', ['$scope', '$rootScope', '$location', '
                 $scope.loginError = ret.error;
             }
         });
-    };
+    }
 
     $scope.logoutAction = function(){
         $rootScope.notLogged = true;
         Auth.logout();
         $location.path('home');
-    };
+    }
 
 
 }]);
@@ -55,12 +54,12 @@ swissCntls.controller('portfolioController', ['$scope', '$location', 'REST', fun
                 }
             }
         });
-    };
+    }
 
     //load another portfolio
     $scope.changePortfolio = function(portfolioId){
         loadPortfolio(portfolioId);
-    };
+    }
     
     //load default portfolio on start
     loadPortfolio(null);

@@ -1,0 +1,106 @@
+<article class="portfolio company">
+    
+    <div class="navTitle">{{ret.company.companyName}}</div>
+
+    <div class="loading" ng-show="loading"></div>     
+
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true" ng-show="ret.companyAddress">
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingOne">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" data-target="#collapseBox-C" aria-expanded="true" aria-controls="collapseOne">
+                <span class="glyphicon glyphicon-globe" aria-hidden="true"></span> Contacts Details
+            </a>
+          </h4>
+        </div>
+        <div id="collapseBox-C" class="panel-collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            <div class="infoRow"><span>Address:</span> {{ret.companyAddress}}</div>
+            <div class="infoRow" ng-show="ret.company.webpage"><span>Web page:</span> 
+                <a href="http://{{(ret.company.webpage).replace('http://', '')}}">{{ret.company.webpage}}</a>
+            </div>
+            <div class="infoRow" ng-show="ret.company.officePhone"><span>Phone:</span> {{ret.company.officePhone}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true" ng-show="ret.company.companyStatusTypeName">
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingOne">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" data-target="#collapseBox-AI" aria-expanded="true" aria-controls="collapseOne">
+                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Additional Info
+            </a>
+          </h4>
+        </div>
+        <div id="collapseBox-AI" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            <div class="infoRow"><span>Status:</span> {{ret.company.companyStatusTypeName}}</div>
+            <div class="infoRow" ng-show="ret.company.webpage"><span>Type:</span> {{ret.company.companyTypeName}}</div>
+            <div class="infoRow" ng-show="ret.company.yearFounded"><span>Year founded:</span> {{ret.company.yearFounded}}</div>
+            <div class="infoRow" ng-show="ret.company.simpleIndustryDescription"><span>Industry:</span> {{ret.company.simpleIndustryDescription}}</div>
+            <div class="infoRow" ng-show="tickers"><span>Ticker:</span>
+                <ul>
+                    <li ng-repeat="ticker in tickers">
+                        <strong>{{ticker.tickerSymbol}}</strong>({{ticker.exchangeSymbol}})<em ng-show="!$last">,</em>
+                    </li>
+                </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true" ng-show="ret.company.businessDescription">
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingOne">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" data-target="#collapseBox-D" aria-expanded="true" aria-controls="collapseOne">
+                <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Company Description
+            </a>
+          </h4>
+        </div>
+        <div id="collapseBox-D" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            {{ret.company.businessDescription}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- UK -->
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true" ng-show="ret.company.mortgages">
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingOne">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" data-target="#collapseBox-M" aria-expanded="true" aria-controls="collapseOne">
+                <span class="glyphicon glyphicon-usd" aria-hidden="true"></span> Mortgages
+            </a>
+          </h4>
+        </div>
+        <div id="collapseBox-M" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            <div class="infoRow" ng-show="ret.company.mortgages.charges">
+                <span>Charges:</span> {{ret.company.mortgages.charges}}
+            </div>
+            <div class="infoRow" ng-show="ret.company.mortgages.outstanding">
+                <span>Outstanding:</span> {{ret.company.mortgages.outstanding}}
+            </div>
+            <div class="infoRow" ng-show="ret.company.mortgages.partSatisfied">
+                <span>PartSatisfied:</span> {{ret.company.mortgages.partSatisfied}}
+            </div>
+            <div class="infoRow" ng-show="ret.company.mortgages.satisfied">
+                <span>Satisfied:</span> {{ret.company.mortgages.satisfied}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="btnAddNoteCenter" ng-show="!loading">
+        <a class="btn btn-primary" href="#notes/{{ret.companyKind.id}}/{{ret.companyKind.kind}}">Read notes</a>
+        <a class="btn btn-primary" href="#add-note/{{ret.companyKind.id}}/{{ret.companyKind.kind}}">Add note</a>
+    </div>
+
+</article>

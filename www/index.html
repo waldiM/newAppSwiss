@@ -7,11 +7,21 @@
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <link rel="stylesheet" type="text/css" href="css/style.css" />
+        <link rel="stylesheet" type="text/css" href="lib/font-awesome/css/font-awesome.min.css">
         <title>SwissMetrics Mobile App</title>
     </head>
     <body ng-app="swissApp">
 
         <main id="site">
+            <nav class="mainManu" ng-show="!noMenu">
+                <a class="logo" href=""></a>
+                <div class="rightMenu">
+                    <a class="search" href=""><i class="fa fa-search"></i></a>
+                    <a class="list" href=""><i class="fa fa-list"></i></a>
+                    <a class="logout" href=""><i class="fa fa-power-off"></i></a>
+                </div>
+                <div class="clear"></div>
+            </nav>
             <div ng-view></div>
         </main>
         

@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-var index = {
+var app = {
     // Application Constructor
     initialize: function() {
         this.bindEvents();
@@ -38,12 +38,21 @@ var index = {
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         //device is ready
+        AppUpdater('http://rwd.swiss-metrics.com/api/rest/mobileUpdate');
     },
 
-    //resize home page in bottom 
-    stickBottom: function(){
-        $('article.homePage').height($(window).height());
+    //hide mobile menu after click 
+    hideMenu: function(){
+        $('.navbar-collapse')
+            //.unbind('click')
+            .click(function(e) {
+                if( $(e.target).is('a') ) {
+                    $(this).collapse('hide');
+                }
+            });
+        //center logo
+        $('.infoHome').height($(window).height() - 150);
     }
 };
 
-index.initialize();
+app.initialize();

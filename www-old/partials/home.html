@@ -1,0 +1,41 @@
+<article class="home">
+
+    <section class="login" ng-show="notLogged">
+
+        <div class="loginBtn">
+            <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#loginModal">Login</button>
+        </div>
+
+        <!-- Modal login -->
+        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+	        <div class="modal-content">
+	          <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="myModalLabel">Login</h4>
+	          </div>
+	          <div class="modal-body">
+		        <div>
+                    <div class="form-group">
+                        <label for="loginEmail">Email</label>
+                        <input type="text" name="email" class="form-control" id="loginEmail" placeholder="Your email" ng-model="authEmail">
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <input type="password" name="password" class="form-control" id="loginPassword" placeholder="Password" ng-model="authPassword">
+                    </div>
+		        </div>
+	          </div>
+	          <div class="modal-footer">
+                <span class="loginError">{{loginError}}</span>
+		        <button type="button" class="btn btn-primary" ng-click="loginAction()">Login</button>
+	          </div>
+	        </div>
+          </div>
+        </div>
+    </section>
+
+    <section class="infoHome">
+    </section>
+
+</article>

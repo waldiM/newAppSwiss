@@ -1,10 +1,12 @@
 $menuColor: #282B33;
-$buttonRedColor: #EB0000;
+$redColor:#eb0000;
 $insertedFontSize: 1.6em;
 
 body{
     font-size: 14px;
     font-family: arial, verdena, sans-serif;
+    margin:0;
+    padding:0;
 }
 body main#site{
     
@@ -23,11 +25,45 @@ body main#site{
     padding:5px 0;
     font-size: 1.1em;
 }
+nav.mainManu{
+    background-color:$menuColor;
+    color:#fff;
+    border-bottom: 3px solid $redColor;
+    a{
+        display:block;
+        float:left;
+        color:#fff;
+    }
+    .logo{
+        background:url(../img/logo-white.png) no-repeat 50% 50%;
+        width:167px;
+        height:48px;
+        margin:12px 10px 12px 15px;
+    }
+    .rightMenu{
+        float:right;
+        a:hover{
+            background-color:#282828;
+        }
+        i{
+            padding: 22px 25px;
+            font-size: 2em;
+        }
+        .search{
+            border-left:1px solid #222;
+        }
+        .list{
+            border-left:1px solid #222;
+            border-right:1px solid #222;
+        }
+    }
+}
 article.homePage{
     $borderInputs: #23242C;
     $borderRadius: 5px;
     $inputPadding: 20px;
     background-color: $menuColor;
+    position:relative;
     section.header{
         background: url(../img/login-mountains.jpg) no-repeat 50% 0% #A11218;
         background-size: 100% auto;
@@ -101,19 +137,22 @@ article.homePage{
             padding:15px;
             border-radius: $borderRadius;
             border:2px solid $borderInputs;
-            background-color: $buttonRedColor;
+            background-color: $redColor;
             width: 100%;
             margin:20px 0;
         }
     }
     section.forgotPassword{
+        position:absolute;
+        bottom:0;
+        width: 100%;
         button{
             color:#fff;
             font-size:$insertedFontSize;
             text-align: center;
             padding:15px;
             border:none;
-            background-color: $buttonRedColor;
+            background-color: $redColor;
             width: 100%;
         }
     }
