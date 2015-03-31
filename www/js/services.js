@@ -17,6 +17,13 @@ swissServices.factory('REST', ['$resource', 'API_SERVER', 'Auth', function($reso
                  get: {method:'GET', params:{portfolioId: null}, headers: { 'Accesstoken': token.hash } }
             });
         },
+        // portfolio list
+        PortfolioList: function(){
+            var token = Auth.get();
+            return $resource(API_SERVER + 'portfolioList', {}, {
+                 get: {method:'GET', params:{}, headers: { 'Accesstoken': token.hash } }
+            });
+        },
         // get short info about company
         CompanyShort: function(){
             var token = Auth.get();

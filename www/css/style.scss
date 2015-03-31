@@ -1,15 +1,25 @@
 $menuColor: #282B33;
 $redColor:#eb0000;
 $insertedFontSize: 1.6em;
+$borderColor: #E8E8E8;
+$oddColor: #f6f6f6;
+$fontSizeMenu: 1.5em;
+$fontSizeMenuNav: 2.2em;
 
 body{
     font-size: 14px;
     font-family: arial, verdena, sans-serif;
     margin:0;
     padding:0;
+    color:#555;
+    background-color: #F2F2F2;
 }
-body main#site{
-    
+a{
+    text-decoration: none;
+    color:#686868;
+    &:hover{
+        text-decoration: none;
+    }
 }
 .clear{
     clear:both;
@@ -24,6 +34,84 @@ body main#site{
     text-align: center;
     padding:5px 0;
     font-size: 1.1em;
+}
+ul{
+    margin:0;
+    padding:0;
+}
+li{
+    list-style: none;
+    margin:0;
+}
+li.menuTab{
+    border-bottom:1px solid $borderColor;
+    background-color: #fff;
+    &:nth-child(odd){
+        background-color:$oddColor;
+    }
+    &:hover{
+        background-color: #eee;
+    }
+    a{
+        color:#686868;
+        text-decoration:none;
+        padding: 15px;
+        &:hover{
+            color:#686868;
+            text-decoration:none;
+        }
+    }
+}
+.subMenu{
+    $heightMenu: 55px;
+    $paddingTop: 10px;
+    border-bottom: 2px solid $borderColor;
+    background-color:#fff;
+    min-height: $heightMenu;
+    .back{
+        font-size: $fontSizeMenuNav;
+        padding:$paddingTop 15px;
+        display: inline-block;
+        border-right: 1px solid $borderColor;
+        background-color:$oddColor;
+        vertical-align: middle;
+    }
+    .info{
+        display:inline-block;
+        vertical-align: middle;
+        padding:15px 0;
+        .name{
+            color:#000;
+            font-weight: bold;
+            font-size: $fontSizeMenu;
+            padding:0 0 0 15px;
+        }
+        .separator{
+            font-size: $fontSizeMenu;
+            padding: 0 10px;
+        }
+        .title{
+            font-size: $fontSizeMenu;
+            color: #999;
+        }
+    }
+    .infoSubName{
+        padding:0;
+        .subName{
+            display:block;
+            padding:0 0 0 15px;
+        }
+    }
+    .navCompany{
+        float:right;
+        height: $heightMenu - $paddingTop;
+        padding:$paddingTop 15px 0 15px;
+        background-color: $oddColor;
+        border-left: 1px solid $borderColor;
+        i{
+            font-size: $fontSizeMenuNav;
+        }
+    }
 }
 nav.mainManu{
     background-color:$menuColor;
@@ -157,4 +245,179 @@ article.homePage{
         }
     }
 
+}
+article.portfolioCompanies{
+    .company{
+        display:block;
+        img{
+            margin:0 10px 0 0;
+            vertical-align: middle;
+        }
+        span{
+            font-size:$fontSizeMenu;
+            vertical-align: middle;
+        }
+        i{
+            float:right;
+            font-size: $fontSizeMenuNav;
+        }
+    }
+}
+.boxesDashboard{
+    text-align: center;
+    .box{
+        display:inline-block;
+        border:1px solid $borderColor;
+        text-align: center;
+        min-width: 150px;
+        margin: 15px 0 0 15px;
+        background-color: #fff;
+        &:hover{
+            border-top:1px solid $redColor;
+        }
+    }
+    i{
+        font-size:5em;
+        padding:25px 0;
+        color:$redColor;
+    }
+    span{
+        border-top:2px solid $borderColor;
+        background-color: $oddColor;
+        text-align: center;
+        display:block;
+        padding: 10px 0;
+    }
+}
+article.companyGeneral{
+    .boxes{
+        .box{
+            display:block;
+            margin:15px;
+            border:1px solid $borderColor;
+            .bar{
+                $heightBar: 80px;
+                display:block;
+                background-color: #fff;
+                font-size:$fontSizeMenu;
+                height: $heightBar;
+                cursor:pointer;
+                .title{
+                    padding:20px 0 0;
+                    vertical-align: middle;
+                }
+                .icon i{
+                    font-size:1.8em;
+                    padding:21px 20px 0;
+                    color:$redColor;
+                    vertical-align: middle;
+                }
+                .arrow{
+                    i{
+                        float:right;
+                        padding:18px 20px 0 20px;
+                        font-size: $fontSizeMenuNav;
+                        border-left:1px solid $borderColor;
+                        height: $heightBar - 18px;
+                    }
+                    .upArrow{
+                        background-color: $oddColor;
+                    }
+                }
+            }
+            .collapse{
+                background-color: $oddColor;
+                .row{
+                    font-size:1.2em;
+                    padding:10px 0;
+                    margin: 0 15px;
+                    border-top: 1px solid $borderColor;
+                    &:first-child{
+                        border:none;
+                    }
+                    .name{
+                        font-weight: bold;
+                        min-width:150px;
+                        display: inline-block;
+                    }
+                }
+                .rowTickers{
+                    .name{
+                        float:left;
+                    }
+                    ul{
+                        float:left
+                    }
+                    li{
+                        display:inline;
+                    }
+                }
+            }
+        }
+    }
+}
+article.noteRead{
+    .addNew{
+        border-bottom:2px solid $borderColor;
+        background-color:$oddColor;
+        font-size:$fontSizeMenu;
+        color: #999;
+        i{
+            font-weight:bold;
+            padding: 10px 10px;
+            vertical-align: middle;
+        }
+    }
+    .note{
+        padding:10px 0;
+        border-bottom: 1px solid $borderColor;
+        background-color:#fff;
+        position:relative;
+        &:nth-child(even){
+            background-color:$oddColor;
+        }
+        .avatar{
+            margin:0 10px;
+            display:inline-block;
+            width:125px;
+            height:125px;
+            border:2px solid $borderColor;
+            border-radius: 6px;
+            vertical-align: top;
+        }
+        .info{
+            display:inline-block;
+            width: 65%;
+            .light{
+                border-radius: 50%;
+                width:10px;
+                height:10px;
+                display: inline-block;
+                vertical-align: middle;
+                margin: 0 5px;
+                &.red{
+                    background-color: red;
+                }
+                &.yellow{
+                    background-color: gold;
+                }
+                &.green{
+                    background-color: green;
+                }
+            }
+            .date{
+                position:absolute;
+                right:10px;
+                top:10px;
+                color: #999;
+            }
+            .author{
+                font-size:$fontSizeMenu;
+                vertical-align: middle;
+            }
+            .message{
+                padding: 5px 4px 2px;
+            }
+        }
+    }
 }

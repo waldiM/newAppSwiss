@@ -1,37 +1,45 @@
-<article class="portfolio noteRead">
+<div ng-include src="'menu.html'"></div>
+<article class="noteRead">
     
-    <div class="navTitle"><span ng-show="!loading"><a href="#company/{{company.companyId}}/{{company.companyKind}}">{{company.companyName}}</a> &raquo; </span> Notes</div>
-
+    <div class="subMenu">
+        <a class="back" href="" back-button><i class="fa fa-angle-left"></i></a>
+        <div class="info infoSubName">
+            <span class="name">{{company.companyName}}</span>
+            <span class="subName">Notes</span>
+        </div>
+        <div class="navCompany"><i class="fa fa-bars"></i></div>
+    </div>
+    
     <div class="loading" ng-show="loading"></div>
-
-    <div class="errorMessage" ng-if="notes.length == 0 && !loading">
-        There are no notes for this company.
-    </div>         
-
-    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true" ng-repeat="note in notes">
-      <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="headingOne">
-          <h4 class="panel-title">
-            <a data-toggle="collapse" data-parent="#accordion" data-target="#collapseBox-{{note.id}}" aria-expanded="true" aria-controls="collapseOne">
-                <span class="light red" ng-if="note.traffic == 1"></span>
-                <span class="light yellow" ng-if="note.traffic == 2"></span> 
-                <span class="light green" ng-if="note.traffic == 3"></span>               
-                <strong>{{note.subject}}</strong>
-                <span class="author"> / {{note.firstname}} {{note.surname}}</span>
-                <span class="date"> / {{unixDate(note.date) | date : 'd.M.yyyy, H:mm'}}</span>
-            </a>
-          </h4>
+    
+    <div class="notes" ng-show="!loading">
+        
+        <div class="errorMessage" ng-if="notes.length == 0">
+            There are no notes for this company.
+        </div> 
+        
+        <div class="addNew">
+            <i class="fa fa-plus"></i>
+            <span>Add new note</span>
         </div>
-        <div id="collapseBox-{{note.id}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-          <div class="panel-body">
-            {{note.text}}
-          </div>
+        
+        <div class="noteList">
+            <div class="note" ng-repeat="note in notes">
+                <div class="avatar"></div>
+                <div class="info">
+                    <span class="light red" ng-if="note.traffic == 1"></span>
+                    <span class="light yellow" ng-if="note.traffic == 2"></span> 
+                    <span class="light green" ng-if="note.traffic == 3"></span> 
+                    <span class="author">{{note.firstname}} {{note.surname}}</span>
+                    <span class="date">{{unixDate(note.date) | date : 'd/M/yyyy, H:mm'}}</span>
+                    <div class="message">
+                        <strong>{{note.subject}}</strong>
+                        <div class="text">{{note.text}}</div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
+        
     </div>
     
-    <div class="btnAddNoteCenter">
-        <a class="btn btn-primary" href="#add-note/{{company.companyId}}/{{company.companyKind}}" ng-show="!loading">Add note</a>
-    </div>
-
 </article>

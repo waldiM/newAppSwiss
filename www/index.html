@@ -13,15 +13,6 @@
     <body ng-app="swissApp">
 
         <main id="site">
-            <nav class="mainManu" ng-show="!noMenu">
-                <a class="logo" href=""></a>
-                <div class="rightMenu">
-                    <a class="search" href=""><i class="fa fa-search"></i></a>
-                    <a class="list" href=""><i class="fa fa-list"></i></a>
-                    <a class="logout" href=""><i class="fa fa-power-off"></i></a>
-                </div>
-                <div class="clear"></div>
-            </nav>
             <div ng-view></div>
         </main>
         
@@ -29,7 +20,6 @@
 	<script src="lib/angular.min.js"></script>	
 	<script src="lib/angular-resource.min.js"></script>
 	<script src="lib/angular-route.min.js"></script>
-        <script src="lib/AppUpdater.js"></script>
         <script src="js/index.js"></script>	
         
 	<script src="js/app.js"></script>

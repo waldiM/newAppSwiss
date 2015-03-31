@@ -1,5 +1,18 @@
 var swissCntls = angular.module('swissCntls', []);
 
+//history back
+swissCntls.directive( 'backButton', function() {
+    return {
+        restrict: 'A',
+        link: function( scope, element, attrs ) {
+            element.on( 'click', function () {
+                history.back();
+                scope.$apply();
+            } );
+        }
+    };
+});
+
 //Login controller
 swissCntls.controller('loginController', ['$scope', '$rootScope', '$location', 'Auth', 'REST', function($scope, $rootScope, $location, Auth, REST) {
 
@@ -8,7 +21,6 @@ swissCntls.controller('loginController', ['$scope', '$rootScope', '$location', '
     //if is logged not show login button
     var token = Auth.get();
     $rootScope.notLogged = token.hash ? false : true;
-    $rootScope.noMenu = true;
     
     $scope.loginAction = function(){
         $scope.loginError = '';
@@ -33,8 +45,28 @@ swissCntls.controller('loginController', ['$scope', '$rootScope', '$location', '
 
 }]);
 
+//Portfolio controller - my portfolios
+swissCntls.controller('portfolioListController', ['$scope', '$location', 'REST', function($scope, $location, REST) {
+
+    $scope.portfolios = [];
+
+    $scope.loading = true;
+    REST.PortfolioList().get({}, function(ret) {
+        if(ret.status == 'ok'){
+            $scope.portfolios = ret.portfolios;
+            $scope.loading = false;
+        }
+        else{
+            if(ret.logged == 'fail'){
+                $location.path('home');
+            }
+        }
+    });
+
+}]);
+
 //Portfolio controller - list companies
-swissCntls.controller('portfolioController', ['$scope', '$location', 'REST', function($scope, $location, REST) {
+swissCntls.controller('portfolioController', ['$scope', '$location', '$routeParams', 'REST', function($scope, $location, $routeParams, REST) {
 
     $scope.companies = [];
     $scope.portfolios = [];
@@ -45,8 +77,7 @@ swissCntls.controller('portfolioController', ['$scope', '$location', 'REST', fun
         REST.Portfolio().get({portfolioId: choosenPortfolio}, function(ret) {
             if(ret.status == 'ok'){
                 $scope.companies = ret.companies;
-                $scope.portfolios = ret.portfolios;
-                $scope.select = {selected: ret.companies[0]['portfolio_id']};
+                $scope.portfolio = ret.portfolio;
                 $scope.loading = false;
             }
             else{
@@ -57,13 +88,9 @@ swissCntls.controller('portfolioController', ['$scope', '$location', 'REST', fun
         });
     };
 
-    //load another portfolio
-    $scope.changePortfolio = function(portfolioId){
-        loadPortfolio(portfolioId);
-    };
     
     //load default portfolio on start
-    loadPortfolio(null);
+    loadPortfolio($routeParams.portfolioId ? $routeParams.portfolioId : null);
 
 }]);
 
@@ -146,6 +173,26 @@ swissCntls.controller('addNoteController', ['$scope', '$routeParams', 'REST', fu
             
         }
     }
+
+}]);
+
+//Company controller - dashboard
+swissCntls.controller('companyDashboardController', ['$scope', '$location', '$routeParams', 'REST', function($scope, $location, $routeParams, REST) {
+
+    $scope.ret = {};
+    $scope.loading = true;    
+
+    REST.CompanyShort().get({companyId: $routeParams.companyId, companyKind: $routeParams.companyKind}, function(ret) {
+        if(ret.status == 'ok'){
+            $scope.company = ret.company;
+            $scope.loading = false;
+        }
+        else{
+            if(ret.logged == 'fail'){
+                $location.path('home');
+            }
+        }
+    });
 
 }]);
 
