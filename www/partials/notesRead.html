@@ -14,18 +14,18 @@
     
     <div class="notes" ng-show="!loading">
         
+        <a class="addNew" href="#add-note/{{company.companyId}}/{{company.companyKind}}">
+            <i class="fa fa-plus"></i>
+            <span>Add new note</span>
+        </a>
+        
         <div class="errorMessage" ng-if="notes.length == 0">
             There are no notes for this company.
         </div> 
         
-        <div class="addNew">
-            <i class="fa fa-plus"></i>
-            <span>Add new note</span>
-        </div>
-        
         <div class="noteList">
             <div class="note" ng-repeat="note in notes">
-                <div class="avatar"></div>
+                <div class="avatar" style="background-image: url(http://swiss-metrics.com/{{note.name ? 'uploads/avatars/'+note.name : 'files/img/blank_avatar.png'}})"></div>
                 <div class="info">
                     <span class="light red" ng-if="note.traffic == 1"></span>
                     <span class="light yellow" ng-if="note.traffic == 2"></span> 

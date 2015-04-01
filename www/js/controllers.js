@@ -14,13 +14,16 @@ swissCntls.directive( 'backButton', function() {
 });
 
 //Login controller
-swissCntls.controller('loginController', ['$scope', '$rootScope', '$location', 'Auth', 'REST', function($scope, $rootScope, $location, Auth, REST) {
+swissCntls.controller('loginController', ['$scope', '$location', 'Auth', 'REST', function($scope, $location, Auth, REST) {
 
     index.stickBottom();
 
-    //if is logged not show login button
+    //if is logged redirect to portfolio
     var token = Auth.get();
-    $rootScope.notLogged = token.hash ? false : true;
+    
+    if(token.hash != 0){
+        $location.path('portfolio');
+    }
     
     $scope.loginAction = function(){
         $scope.loginError = '';
@@ -28,7 +31,6 @@ swissCntls.controller('loginController', ['$scope', '$rootScope', '$location', '
             if(ret.status == 'ok'){
                 Auth.put(ret.data.token);
                 $location.path('portfolio');
-                $rootScope.notLogged = false;
             }
             else{
                 $scope.loginError = ret.error;
@@ -36,12 +38,13 @@ swissCntls.controller('loginController', ['$scope', '$rootScope', '$location', '
         });
     };
 
-    $scope.logoutAction = function(){
-        $rootScope.notLogged = true;
-        Auth.logout();
-        $location.path('home');
-    };
+}]);
 
+//Logout
+swissCntls.controller('logoutController', ['$location', 'Auth', function($location, Auth) {
+
+    index.stickBottom();
+    Auth.logout();
 
 }]);
 
@@ -148,7 +151,7 @@ swissCntls.controller('addNoteController', ['$scope', '$routeParams', 'REST', fu
     });
 
     //save note
-    $scope.saveNoteAction = function(){
+    $scope.saveNoteAction = function(priority){
         if(!$scope.addSubject){
             $scope.saveError = 'Enter subject.';
         }
@@ -158,7 +161,7 @@ swissCntls.controller('addNoteController', ['$scope', '$routeParams', 'REST', fu
         else{
             REST.AddNote().save({
                 companyId: $routeParams.companyId, companyKind: $routeParams.companyKind,
-                subject: $scope.addSubject, note: $scope.addText, traffic: $scope.addPriority}, function(ret) {
+                subject: $scope.addSubject, note: $scope.addText, traffic: priority}, function(ret) {
                 if(ret.status == 'ok'){
                     $scope.saveOk = true;
                     $scope.loading = false;
@@ -172,8 +175,8 @@ swissCntls.controller('addNoteController', ['$scope', '$routeParams', 'REST', fu
 
             
         }
-    }
-
+    };
+    
 }]);
 
 //Company controller - dashboard
@@ -214,5 +217,32 @@ swissCntls.controller('companyController', ['$scope', '$location', '$routeParams
             }
         }
     });
+
+}]);
+
+//Search company
+swissCntls.controller('searchController', ['$scope', '$location', 'REST', function($scope, $location, REST) {
+
+    $scope.companies = [];
+
+    $scope.searchAction = function(){
+        if(!$scope.searchedTxt){
+            $scope.error = 'Enter company name.';
+        }
+        else{
+            $scope.loading = true;
+            REST.Search().get({name: $scope.searchedTxt}, function(ret) {
+                if(ret.status == 'ok'){
+                    $scope.companies = ret.companies;
+                    $scope.loading = false;
+                }
+                else{
+                    if(ret.logged == 'fail'){
+                        $location.path('home');
+                    }
+                }
+            });
+        }
+    };
 
 }]);

@@ -51,38 +51,37 @@ swissServices.factory('REST', ['$resource', 'API_SERVER', 'Auth', function($reso
             return $resource(API_SERVER + 'addNote/:companyId/:companyKind', {companyId: '@companyId', companyKind:'@companyKind'}, {
                  save: {method:'POST', params:{subject: null, note: null, priority: null}, headers: { 'Accesstoken': token.hash } }
             });
+        },
+        // search company
+        Search: function(){
+            var token = Auth.get();
+            return $resource(API_SERVER + 'search', {}, {
+                 get: {method:'POST', params:{name: null}, headers: { 'Accesstoken': token.hash } }
+            });
         }
-    }
+    };
 }]);
 
 // save/get auth cookie
-swissServices.factory('Auth', ['currentToken', function(currentToken){
+swissServices.factory('Auth', [function(){
 
     var ret = {};
-
+    var nullToken = 0;
+    
     ret.put = function(value) {
         localStorage.setItem('smAppToken', value);
-        currentToken.hash = value;
-        return currentToken.hash;
-    }
+        return true;
+    };
 
     ret.get = function() {
-        var token = null;
-        if(currentToken.hash == 'logout'){
-            token = null;
-        }
-        else{
-            var smAppToken = localStorage.getItem('smAppToken');
-            token = currentToken.hash ? currentToken.hash : smAppToken;       
-        }
-        return {hash: token};
-    }
+        var smAppToken = localStorage.getItem('smAppToken');
+        return {hash: smAppToken};
+    };
 
     ret.logout = function(){
-        currentToken.hash = 'logout';
-        localStorage.setItem('smAppToken', null);
-        return currentToken.hash;
-    }
+        localStorage.setItem('smAppToken', nullToken);
+        return true;
+    };
 
     return ret;
 }]);
